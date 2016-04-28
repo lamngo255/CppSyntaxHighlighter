@@ -4,10 +4,36 @@ import QtQuick.Window 2.2
 import QtQuick.Dialogs 1.2
 
 ApplicationWindow {
-    title: qsTr("Hello World")
-    width: 640
-    height: 480
+    width: 700
+    height: 500
     visible: true
 
 
+    FileDialog {
+        id: fileDialog
+        nameFilters: ["C++ files (*.cpp)", "Text files (*.txt)"]
+        onAccepted: {
+        }
+    }
+
+    Action {
+        id: fileOpenAction
+        iconSource: "images/fileopen.png"
+        iconName: "document-open"
+        text: "Open"
+        onTriggered: fileDialog.open()
+    }
+
+    menuBar: MenuBar {
+        Menu {
+            title: "&File"
+            MenuItem { action: fileOpenAction }
+            MenuItem { text: "Quit"; onTriggered: Qt.quit() }
+        }
+    }
+
+    TextArea {
+        id: textArea
+        anchors.fill: parent
+    }
 }
