@@ -2,8 +2,11 @@ TEMPLATE = app
 
 QT += qml quick widgets
 
-SOURCES += main.cpp \
-    highlighter.cpp
+CONFIG += c++11
+
+SOURCES += src/main.cpp \
+	src/highlighter.cpp \
+	src/documenthandler.cpp
 
 RESOURCES += qml.qrc
 
@@ -14,4 +17,5 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    highlighter.h
+	src/highlighter.h \
+	src/documenthandler.h
