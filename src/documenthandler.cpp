@@ -23,20 +23,6 @@ void DocumentHandler::openFile(const QString& path)
     file.close();
 }
 
-void DocumentHandler::onOpenTriggered()
-{
-    auto fileName = QFileDialog::getOpenFileName(0, QString("Open"));
-    if (fileName.isEmpty())
-        return;
-    QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return;
-    QTextStream stream(&file);
-    auto text = stream.readAll();
-    setText(text);
-    file.close();
-}
-
 void DocumentHandler::setDocument(QQuickTextDocument* document)
 {
     auto highlighter = new Highlighter(document->textDocument());
